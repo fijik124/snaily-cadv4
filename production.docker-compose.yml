@@ -48,7 +48,3 @@ services:
     networks:
       - cad_web
     restart: always
-
-networks:
-  cad_web:
-    external: true
