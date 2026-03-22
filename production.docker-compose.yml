@@ -23,6 +23,7 @@ services:
       target: api
     environment:
       DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      JWT_SECRET: ${JWT_SECRET}
       CORS_ORIGIN_URL: ${CORS_ORIGIN_URL}
       NEXT_PUBLIC_CLIENT_URL: ${CORS_ORIGIN_URL}
       NEXT_PUBLIC_PROD_ORIGIN: ${NEXT_PUBLIC_PROD_ORIGIN}
