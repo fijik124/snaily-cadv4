@@ -63,7 +63,8 @@ export const getServerSideProps: GetServerSideProps = async ({ locale, req }) =>
   const [data] = await requestAll(req, [["/admin/manage/cad-settings", null]]);
 
   const CORS_ORIGIN_URL = process.env.CORS_ORIGIN_URL ?? null;
-  const NEXT_PUBLIC_CLIENT_URL = process.env.NEXT_PUBLIC_CLIENT_URL ?? null;
+  const NEXT_PUBLIC_CLIENT_URL =
+    process.env.NEXT_PUBLIC_CLIENT_URL ?? process.env.CORS_ORIGIN_URL ?? null;
 
   const isWildcard = CORS_ORIGIN_URL?.includes("*") ?? false;
   const isLocalhost =

@@ -24,6 +24,9 @@ services:
     environment:
       DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
       CORS_ORIGIN_URL: ${CORS_ORIGIN_URL}
+      NEXT_PUBLIC_CLIENT_URL: ${CORS_ORIGIN_URL}
+      NEXT_PUBLIC_PROD_ORIGIN: ${NEXT_PUBLIC_PROD_ORIGIN}
+      DOMAIN: ${DOMAIN}
     ports:
       - "${PORT_API}:${PORT_API}"
     expose:
@@ -42,7 +45,13 @@ services:
       context: .
       dockerfile: ./Dockerfile
       target: client
+      args:
+        CORS_ORIGIN_URL: ${CORS_ORIGIN_URL}
+        NEXT_PUBLIC_CLIENT_URL: ${CORS_ORIGIN_URL}
+        NEXT_PUBLIC_PROD_ORIGIN: ${NEXT_PUBLIC_PROD_ORIGIN}
+        DOMAIN: ${DOMAIN}
     environment:
+      CORS_ORIGIN_URL: ${CORS_ORIGIN_URL}
       NEXT_PUBLIC_CLIENT_URL: ${CORS_ORIGIN_URL}
       NEXT_PUBLIC_PROD_ORIGIN: ${NEXT_PUBLIC_PROD_ORIGIN}
       DOMAIN: ${DOMAIN}
