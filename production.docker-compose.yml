@@ -21,6 +21,8 @@ services:
       context: .
       dockerfile: ./Dockerfile
       target: api
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
     ports:
       - "${PORT_API}:${PORT_API}"
     expose:
