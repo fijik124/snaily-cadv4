@@ -2,8 +2,8 @@ FROM node:20-slim AS base
 
 WORKDIR /snailycad
 
-# Install OpenSSL and pnpm
-RUN apt-get update -y && apt-get install -y openssl && rm -rf /var/lib/apt/lists/* && npm install -g pnpm && pnpm config set httpTimeout 1200000
+# Install OpenSSL, git, and pnpm
+RUN apt-get update -y && apt-get install -y openssl git && rm -rf /var/lib/apt/lists/* && npm install -g pnpm && pnpm config set httpTimeout 1200000
 
 # Copy the rest of the source code
 COPY . ./
